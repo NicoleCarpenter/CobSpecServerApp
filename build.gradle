@@ -1,0 +1,19 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'carpentern.cobSpecApp.Main'
+
+repositories {
+   flatDir {
+       dirs 'libs'
+   }
+}
+
+dependencies {
+  testCompile 'junit:junit:4.11'
+  compile name: 'JavaHttpServer'
+}
+
+test.testLogging {
+  events 'passed', 'skipped', 'failed'
+}
