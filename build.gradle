@@ -4,6 +4,8 @@ apply plugin: 'application'
 mainClassName = 'carpentern.cobSpecApp.Main'
 
 repositories {
+   mavenCentral()
+   
    flatDir {
        dirs 'libs'
    }

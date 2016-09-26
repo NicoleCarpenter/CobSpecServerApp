@@ -1,4 +1,4 @@
-* [![Build Status](https://travis-ci.org/NicoleCarpenter/CobSpecServerApp.svg?branch=master)](https://travis-ci.org/NicoleCarpenter/CobSpecServerApp)
+[![Build Status](https://travis-ci.org/NicoleCarpenter/CobSpecServerApp.svg?branch=master)](https://travis-ci.org/NicoleCarpenter/CobSpecServerApp)
 
 # Java Http Server
 
@@ -42,7 +42,7 @@ To run the unit tests from the root directory, type
 The Cob Spec tests can be run using the instructions in the [Cob Spec](https://github.com/8thlight/cob_spec) repo. When editing the server information, your path variable will be 
 
 ```
-pathToServer/CobSpecServerApp/lib/JavaHttpServer.jar -p 5000 -d public
+pathToServer/CobSpecServerApp/libs/JavaHttpServer.jar -p 5000 -d public
 ```
 
 The __p__ flag indicates that the application will run on port 5000 and the __d__ flag specifies that public files are located in the public directory, so the directory variable should look as such
