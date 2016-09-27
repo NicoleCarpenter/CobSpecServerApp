@@ -1,6 +1,6 @@
 package carpentern.cobSpecApp.util;
 
-import carpentern.coreServer.router.Routes;
+import carpentern.cobSpecApp.router.Routes;
 
 public class Config {
   public static Routes routes = new Routes();
