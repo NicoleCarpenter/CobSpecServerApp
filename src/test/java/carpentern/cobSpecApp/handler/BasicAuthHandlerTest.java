@@ -1,9 +1,10 @@
 import carpentern.cobSpecApp.handler.BasicAuthHandler;
+import carpentern.cobSpecApp.util.RequestLogger;
+
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import java.util.HashMap;
 import java.util.Arrays;
-import carpentern.coreServer.util.RequestLogger;
 
 public class BasicAuthHandlerTest extends junit.framework.TestCase {
   private MockHttpResponseBuilder responseBuilder;

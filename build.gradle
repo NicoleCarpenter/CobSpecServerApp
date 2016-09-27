@@ -19,3 +19,16 @@ dependencies {
 test.testLogging {
   events 'passed', 'skipped', 'failed'
 }
+
+jar {
+  manifest {
+    attributes (
+      'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+      'Main-Class': 'carpentern.cobSpecApp.Main')
+  }
+
+  from {
+    configurations.compile.collect { it.isDirectory() ? it: zipTree(it) }
+  }
+
+}
