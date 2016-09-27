@@ -1,8 +1,10 @@
 package carpentern.cobSpecApp.handler;
 
+import carpentern.cobSpecApp.file.FileIO;
+import carpentern.cobSpecApp.file.FileSystem;
+import carpentern.cobSpecApp.util.HtmlFormatter;
+
 import carpentern.coreServer.handler.Handler;
-import carpentern.coreServer.io.FileIO;
-import carpentern.coreServer.file.FileSystem;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import carpentern.coreServer.response.HttpResponse;
@@ -72,14 +74,8 @@ public class FormHandler implements Handler {
   }
 
   private String generateForm() {
-    return "<!DOCTYPE html>\n" +
-           "<html>\n" +
-           "<body>\n" +
-           "<form action=\"/form\" method=\"post\">" +
-           "<input name=\"data\" type=\"text\">" +
-           "<input type=\"submit\" value=\"submit\">" +
-           "</form>" +
-           "</body></html>";
+    HtmlFormatter formatter = new HtmlFormatter();
+    return formatter.createForm();
   }
 
   private String findPath(HttpRequest request) {

@@ -1,13 +1,14 @@
 package carpentern.cobSpecApp.handler;
 
+import carpentern.cobSpecApp.file.FileIO;
+import carpentern.cobSpecApp.file.FileSystem;
+import carpentern.cobSpecApp.file.FileTypeMatcher;
+import carpentern.cobSpecApp.util.HtmlFormatter;
+
 import carpentern.coreServer.handler.Handler;
-import carpentern.coreServer.io.FileIO;
-import carpentern.coreServer.file.FileSystem;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import carpentern.coreServer.response.ResponseBuilder;
-import carpentern.coreServer.util.FileTypeMatcher;
-import carpentern.coreServer.util.HtmlFormatter;
 import java.util.HashMap;
 
 public class FileHandler implements Handler {

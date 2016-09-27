@@ -1,3 +1,4 @@
+import carpentern.cobSpecApp.file.FileTypeMatcher;
 import carpentern.cobSpecApp.handler.*;
 import carpentern.cobSpecApp.router.HttpRouter;
 import carpentern.cobSpecApp.router.Routes;
@@ -6,7 +7,6 @@ import carpentern.cobSpecApp.util.SetUp;
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponseBuilder;
-import carpentern.coreServer.util.FileTypeMatcher;
 import java.util.HashMap;
 import java.io.File;
 

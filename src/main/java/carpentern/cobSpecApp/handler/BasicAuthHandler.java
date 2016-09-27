@@ -1,10 +1,11 @@
 package carpentern.cobSpecApp.handler;
 
+import carpentern.cobSpecApp.util.RequestLogger;
+
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import carpentern.coreServer.response.ResponseBuilder;
-import carpentern.coreServer.util.RequestLogger;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 

@@ -1,9 +1,10 @@
+import carpentern.cobSpecApp.file.FileIO;
+import carpentern.cobSpecApp.file.FileSystem;
+import carpentern.cobSpecApp.file.FileTypeMatcher;
+import carpentern.cobSpecApp.util.SetUp;
+
 import carpentern.coreServer.router.Router;
 import carpentern.coreServer.response.HttpResponseBuilder;
-import carpentern.coreServer.file.FileSystem;
-import carpentern.coreServer.io.FileIO;
-import carpentern.coreServer.util.FileTypeMatcher;
-import carpentern.coreServer.util.SetUp;
 
 public class SetUpTest extends junit.framework.TestCase {
   private MockHttpRouter router;
