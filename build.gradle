@@ -2,18 +2,16 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 mainClassName = 'carpentern.cobSpecApp.Main'
+version = "0.1.0"
 
 repositories {
    mavenCentral()
-   
-   flatDir {
-       dirs 'libs'
-   }
+   maven { url 'https://clojars.org/repo' }
 }
 
 dependencies {
+  compile 'org.clojars.ncarpenter:java-http-server:1.0-SNAPSHOT'
   testCompile 'junit:junit:4.11'
-  compile name: 'JavaHttpServer'
 }
 
 test.testLogging {
@@ -30,5 +28,4 @@ jar {
   from {
     configurations.compile.collect { it.isDirectory() ? it: zipTree(it) }
   }
-
 }
