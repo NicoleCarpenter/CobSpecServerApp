@@ -38,13 +38,13 @@ public class Main {
     HttpRequestParser httpRequestParser = new HttpRequestParser(httpServerOutput, httpParamParser);
     File rootDirectory = new File(argsParser.getRootDirectory());
     HttpFileSystem fileSystem = new HttpFileSystem();
-    HttpFileIO fileIO = new HttpFileIO(rootDirectory, fileSystem);
+    HttpFileIO fileIO = new HttpFileIO(rootDirectory);
     HttpResponseBuilder httpResponseBuilder = new HttpResponseBuilder();
     FileTypeMatcher typeMatcher = new FileTypeMatcher();
 
     SetUp setUp = new SetUp();
     setUp.registerRoutes(httpResponseBuilder, fileSystem, fileIO, typeMatcher);
-    HttpRouter httpRouter = new HttpRouter(rootDirectory, fileSystem, fileIO, httpResponseBuilder, typeMatcher);
+    HttpRouter httpRouter = new HttpRouter(httpResponseBuilder);
 
     HttpServer server = new HttpServer(httpServerSocket, httpRequestParser, httpRouter, httpServerOutput);
 

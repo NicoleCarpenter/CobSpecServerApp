@@ -7,7 +7,6 @@ import carpentern.coreServer.router.Router;
 import carpentern.coreServer.response.HttpResponseBuilder;
 
 public class SetUpTest extends junit.framework.TestCase {
-  private MockHttpRouter router;
   private HttpResponseBuilder responseBuilder;
   private MockHttpFileSystem fileSystem;
   private MockHttpFileIO fileIO;
@@ -15,7 +14,7 @@ public class SetUpTest extends junit.framework.TestCase {
   private SetUp setUp;
 
   protected void setUp() {
-    router = new MockHttpRouter();
+    MockHttpRouter router = new MockHttpRouter();
     responseBuilder = new HttpResponseBuilder();
     fileSystem = new MockHttpFileSystem();
     fileIO = new MockHttpFileIO();

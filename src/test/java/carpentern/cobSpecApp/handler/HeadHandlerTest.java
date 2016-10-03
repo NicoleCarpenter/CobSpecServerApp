@@ -3,7 +3,6 @@ import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import carpentern.coreServer.response.HttpResponseBuilder;
 import java.util.HashMap;
-import java.io.File;
 
 public class HeadHandlerTest extends junit.framework.TestCase {
   private HttpResponse response;
@@ -14,7 +13,7 @@ public class HeadHandlerTest extends junit.framework.TestCase {
     HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
     HeadHandler handler = new HeadHandler(responseBuilder);
 
-    HttpRequest request = new HttpRequest("HEAD", "/", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    HttpRequest request = new HttpRequest("HEAD", "/", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     response = handler.handleRoute(request);
   }
 

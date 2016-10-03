@@ -3,7 +3,6 @@ package carpentern.cobSpecApp.file;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -12,25 +11,20 @@ import java.util.Arrays;
 
 public class HttpFileIO implements FileIO {
   private File rootDirectory;
-  private FileSystem fileSystem;
-  private FileInputStream fileInputStream = null;
-  private FileOutputStream fileOutputStream = null;
 
-  public HttpFileIO(File rootDirectory, FileSystem fileSystem) {
+  public HttpFileIO(File rootDirectory) {
     this.rootDirectory = rootDirectory;
-    this.fileSystem = fileSystem;
   }
 
   @Override
   public byte[] getFileContents(String filePath) {
+    FileInputStream fileInputStream;
     File file = new File(filePath);
     byte[] fileContent = new byte[getFileLength(file)];
     try {
       fileInputStream = new FileInputStream(file);
       fileInputStream.read(fileContent);
       fileInputStream.close();
-    } catch (FileNotFoundException  e) {
-      e.printStackTrace();
     } catch (IOException e) {
       e.printStackTrace();
     }
@@ -93,16 +87,6 @@ public class HttpFileIO implements FileIO {
     }
   }
 
-  public File createFile(String uri) {
-    File file = new File(rootDirectory.getAbsolutePath() + uri);
-    try {
-      file.createNewFile();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return file;
-  }
-
   public void writeToFile(String filePath, String content) {
     try {
       PrintWriter writer = new PrintWriter(filePath, "UTF-8");
@@ -126,6 +110,7 @@ public class HttpFileIO implements FileIO {
   }
 
   public void deleteFileContent(String fileName){
+    FileOutputStream fileOutputStream;
     File file = new File(fileName);
     try {
       fileOutputStream = new FileOutputStream(file);

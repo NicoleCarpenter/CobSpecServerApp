@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class RoutesTest extends junit.framework.TestCase {
-  Routes routes;
-  Map<String, HashMap<String, Handler>> routesList;
+  private Routes routes;
+  private Map<String, HashMap<String, Handler>> routesList;
 
   protected void setUp() {
     routes = new Routes();

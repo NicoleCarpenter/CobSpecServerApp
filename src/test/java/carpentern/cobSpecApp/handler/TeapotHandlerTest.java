@@ -16,7 +16,7 @@ public class TeapotHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteCoffee() {
-    HttpRequest request = new HttpRequest("mockMethod", "/coffee", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "/coffee", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
     HashMap<String, String> testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
@@ -29,7 +29,7 @@ public class TeapotHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteTea() {
-    HttpRequest request = new HttpRequest("mockMethod", "/tea", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "/tea", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
     HashMap<String, String> testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");

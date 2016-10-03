@@ -3,7 +3,6 @@ import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import carpentern.coreServer.response.HttpResponseBuilder;
 import java.util.HashMap;
-import java.io.File;
 
 public class FormHandlerTest extends junit.framework.TestCase {
   private HttpResponse response;
@@ -36,7 +35,7 @@ public class FormHandlerTest extends junit.framework.TestCase {
     fileSystem.stubExists(exists);
 
     FormHandler handler = new FormHandler(responseBuilder, fileSystem, fileIO);
-    HttpRequest request = new HttpRequest(method, "/form", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    HttpRequest request = new HttpRequest(method, "/form", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     
     return handler.handleRoute(request);
   }

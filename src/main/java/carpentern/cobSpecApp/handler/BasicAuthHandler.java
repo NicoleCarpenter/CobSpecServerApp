@@ -1,7 +1,6 @@
 package carpentern.cobSpecApp.handler;
 
 import carpentern.cobSpecApp.util.RequestLogger;
-
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
@@ -78,7 +77,7 @@ public class BasicAuthHandler implements Handler {
   }
 
   private void handleAuthorizedRequest() {
-    byte[] logData = new String(getLogData()).getBytes();
+    byte[] logData = getLogData().getBytes();
     responseBuilder.buildOkResponse();
     responseBuilder.setBody(logData);
   }

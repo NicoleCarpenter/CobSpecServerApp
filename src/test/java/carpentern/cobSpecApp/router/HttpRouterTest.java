@@ -1,14 +1,11 @@
 import carpentern.cobSpecApp.file.FileTypeMatcher;
 import carpentern.cobSpecApp.handler.*;
 import carpentern.cobSpecApp.router.HttpRouter;
-import carpentern.cobSpecApp.router.Routes;
 import carpentern.cobSpecApp.util.SetUp;
-
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponseBuilder;
 import java.util.HashMap;
-import java.io.File;
 
 public class HttpRouterTest extends junit.framework.TestCase {
   private HttpRequest request;
@@ -17,7 +14,6 @@ public class HttpRouterTest extends junit.framework.TestCase {
 
   protected void setUp() {
     FileTypeMatcher typeMatcher = new FileTypeMatcher();
-    File rootDirectory = new File("/public");
     fileSystem = new MockHttpFileSystem();
     MockHttpFileIO fileIO = new MockHttpFileIO();
     HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
@@ -25,7 +21,7 @@ public class HttpRouterTest extends junit.framework.TestCase {
     SetUp setUp = new SetUp();
     setUp.registerRoutes(responseBuilder, fileSystem, fileIO, typeMatcher);
 
-    router = new HttpRouter(rootDirectory, fileSystem, fileIO, responseBuilder, typeMatcher);
+    router = new HttpRouter(responseBuilder);
   }
 
   protected void tearDown() {

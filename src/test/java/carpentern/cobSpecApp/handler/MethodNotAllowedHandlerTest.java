@@ -13,7 +13,7 @@ public class MethodNotAllowedHandlerTest extends junit.framework.TestCase {
     formatter = new Formatter();
     HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
     handler = new MethodNotAllowedHandler(responseBuilder);
-    HttpRequest request = new HttpRequest("mockMethod", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
   }
 

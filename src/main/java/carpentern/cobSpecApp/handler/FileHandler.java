@@ -4,7 +4,6 @@ import carpentern.cobSpecApp.file.FileIO;
 import carpentern.cobSpecApp.file.FileSystem;
 import carpentern.cobSpecApp.file.FileTypeMatcher;
 import carpentern.cobSpecApp.util.HtmlFormatter;
-
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
@@ -27,7 +26,7 @@ public class FileHandler implements Handler {
   @Override
   public HttpResponse handleRoute(HttpRequest request) {
     String uri = request.getUri();
-    String path = findPath(request, uri);
+    String path = findPath(uri);
     if (fileSystem.isFile(path)) {
       buildFileResponse(request, path, uri);
     } else {
@@ -90,7 +89,7 @@ public class FileHandler implements Handler {
     return dotPosition != -1;
   }
 
-  private String findPath(HttpRequest request, String uri) {
+  private String findPath(String uri) {
     String rootPath = fileSystem.getFileAbsolutePath(fileIO.getRootDirectory());
     String requestPath = uri.replace(fileSystem.getFileName(fileIO.getRootDirectory()), "");
     return rootPath + requestPath;

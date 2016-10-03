@@ -17,7 +17,7 @@ public class PatchHandlerTest extends junit.framework.TestCase {
     formatter = new Formatter();
     fileIO = new MockHttpFileIO();
     responseBuilder = new HttpResponseBuilder();
-    requestHeaders = new HashMap<String, String>();
+    requestHeaders = new HashMap<>();
     testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
   }

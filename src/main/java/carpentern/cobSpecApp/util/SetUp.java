@@ -4,10 +4,7 @@ import carpentern.cobSpecApp.handler.*;
 import carpentern.cobSpecApp.file.FileIO;
 import carpentern.cobSpecApp.file.FileSystem;
 import carpentern.cobSpecApp.file.FileTypeMatcher;
-import carpentern.cobSpecApp.router.Routes;
-
 import carpentern.coreServer.response.HttpResponseBuilder;
-import carpentern.coreServer.router.Router;
 
 public class SetUp {
 

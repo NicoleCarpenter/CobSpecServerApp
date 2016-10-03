@@ -24,7 +24,7 @@ public class TeapotHandler implements Handler {
   }
 
   private void buildCoffeeResponse() {
-    byte[] teapotMessage = new String("I'm a teapot").getBytes();
+    byte[] teapotMessage = "I'm a teapot".getBytes();
     responseBuilder.buildCoffeeResponse();
     responseBuilder.setBody(teapotMessage);
   }

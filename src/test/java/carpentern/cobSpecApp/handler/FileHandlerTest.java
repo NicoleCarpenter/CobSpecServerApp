@@ -1,15 +1,11 @@
 import carpentern.cobSpecApp.file.FileTypeMatcher;
 import carpentern.cobSpecApp.handler.FileHandler;
-
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import java.util.HashMap;
-import java.io.File;
 
 public class FileHandlerTest extends junit.framework.TestCase {
   private FileHandler handler;
-  private HttpRequest request;
-  private String responseBody;
   private MockHttpFileIO fileIO;
   private MockHttpFileSystem fileSystem;
   private MockHttpResponseBuilder responseBuilder;
@@ -27,7 +23,7 @@ public class FileHandlerTest extends junit.framework.TestCase {
   }
 
   private HttpResponse testResponse(String uri, boolean isFile, String responseBody) {
-    request = new HttpRequest("GET", uri, new HashMap<>(), "HTTP/1.1", requestHeaders, "");
+    HttpRequest request = new HttpRequest("GET", uri, new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     fileSystem.stubIsFile(isFile);
     fileIO.stubResponseBody(responseBody);
     return handler.handleRoute(request);
@@ -37,7 +33,7 @@ public class FileHandlerTest extends junit.framework.TestCase {
     String uri = "/file.txt";
     boolean isFile = true;
     String responseBody = "This is a file";
-    HttpResponse response = testResponse(uri, isFile, responseBody);
+    testResponse(uri, isFile, responseBody);
 
     assertTrue(fileIO.getRootDirectoryCalled);
     assertTrue(fileSystem.isFileCalled);
@@ -52,7 +48,7 @@ public class FileHandlerTest extends junit.framework.TestCase {
     String uri = "/file.txt";
     boolean isFile = true;
     String responseBody = "This is a file";
-    HttpResponse response = testResponse(uri, isFile, responseBody);
+    testResponse(uri, isFile, responseBody);
 
     assertTrue(fileIO.getFileContentsCalled);
     assertTrue(responseBuilder.buildOkResponseCalled);
@@ -64,7 +60,7 @@ public class FileHandlerTest extends junit.framework.TestCase {
     boolean isFile = true;
     requestHeaders.put("Range", "bytes=0-4");
     String responseBody = "This ";
-    HttpResponse response = testResponse(uri, isFile, responseBody);
+    testResponse(uri, isFile, responseBody);
 
     assertTrue(fileIO.getPartialFileContentsCalled);
     assertEquals("//file.txt bytes=0-4", fileIO.getPartialFileContentsCalledWith);
@@ -78,7 +74,7 @@ public class FileHandlerTest extends junit.framework.TestCase {
     String responseBody = "This is a file";
     String[] directoryFiles = {"File1", "File2", "File3"};
     fileSystem.stubList(directoryFiles);
-    HttpResponse response = testResponse(uri, isFile, responseBody);
+    testResponse(uri, isFile, responseBody);
 
     assertTrue(fileSystem.listCalled);
     assertTrue(responseBuilder.buildOkResponseCalled);

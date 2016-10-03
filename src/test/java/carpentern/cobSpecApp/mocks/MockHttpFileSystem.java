@@ -1,23 +1,16 @@
 import carpentern.cobSpecApp.file.FileSystem;
 import java.io.File;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
 
-public class MockHttpFileSystem implements FileSystem {
+class MockHttpFileSystem implements FileSystem {
   boolean existsCalled = false;
   boolean isFileCalled = false;
   boolean listCalled = false;
-  boolean getNameCalled = false;
   boolean getFileNameCalled = false;
-  boolean getAbsolutePathCalled = false;
   boolean getFileAbsolutePathCalled = false;
   boolean stubbedExists;
   boolean stubbedIsFile;
   String[] stubbedList;
-  String stubbedGetName;
   String stubbedGetFileName;
-  String stubbedGetAbsolutePath;
   String stubbedGetFileAbsolutePath;
 
   public boolean exists(String file) {
@@ -33,16 +26,6 @@ public class MockHttpFileSystem implements FileSystem {
   public String[] list(String directory) {
     listCalled = true;
     return stubbedList;
-  }
-
-  public String getName(String file) {
-    getNameCalled = true;
-    return stubbedGetName;
-  }
-
-  public String getAbsolutePath(String file) {
-    getAbsolutePathCalled = true;
-    return stubbedGetAbsolutePath;
   }
 
   public String getFileAbsolutePath(File file) {
@@ -67,16 +50,8 @@ public class MockHttpFileSystem implements FileSystem {
     stubbedList = stubbedValue;
   }
 
-  public void stubGetName(String stubbedValue) {
-    stubbedGetName = stubbedValue;
-  }
-
   public void stubGetFileName(String stubbedValue) {
     stubbedGetFileName = stubbedValue;
-  }
-
-  public void stubGetAbsolutePath(String stubbedValue) {
-    stubbedGetAbsolutePath = stubbedValue;
   }
 
   public void stubGetFileAbsolutePath(String stubbedValue) {

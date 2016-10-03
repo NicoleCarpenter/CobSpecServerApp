@@ -5,15 +5,14 @@ import carpentern.coreServer.response.HttpResponseBuilder;
 import java.util.HashMap;
 
 public class NotFoundHandlerTest extends junit.framework.TestCase {
-  private NotFoundHandler handler;
   private HttpResponse response;
   private Formatter formatter;
 
   protected void setUp() {
     formatter = new Formatter();
     HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
-    handler = new NotFoundHandler(responseBuilder);
-    HttpRequest request = new HttpRequest("GET", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    NotFoundHandler handler = new NotFoundHandler(responseBuilder);
+    HttpRequest request = new HttpRequest("GET", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     response = handler.handleRoute(request);
   }
 
