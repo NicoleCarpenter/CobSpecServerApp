@@ -1,7 +1,7 @@
 import carpentern.cobSpecApp.handler.PatchHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
 
 public class PatchHandlerTest extends junit.framework.TestCase {
@@ -9,15 +9,15 @@ public class PatchHandlerTest extends junit.framework.TestCase {
   private HttpResponse response;
   private String responseBody;
   private MockHttpFileIO fileIO;
-  private HttpResponseBuilder responseBuilder;
+  private CobSpecResponseBuilder responseBuilder;
   private HashMap<String, String> testHeaders;
   private HashMap<String, String> requestHeaders;
 
   public void setUp() {
     formatter = new Formatter();
     fileIO = new MockHttpFileIO();
-    responseBuilder = new HttpResponseBuilder();
-    requestHeaders = new HashMap<String, String>();
+    responseBuilder = new CobSpecResponseBuilder();
+    requestHeaders = new HashMap<>();
     testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
   }

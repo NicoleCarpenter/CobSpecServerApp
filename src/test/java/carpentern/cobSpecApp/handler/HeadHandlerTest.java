@@ -1,9 +1,8 @@
 import carpentern.cobSpecApp.handler.HeadHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
-import java.io.File;
 
 public class HeadHandlerTest extends junit.framework.TestCase {
   private HttpResponse response;
@@ -11,10 +10,10 @@ public class HeadHandlerTest extends junit.framework.TestCase {
 
   protected void setUp() {
     formatter = new Formatter();
-    HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
+    CobSpecResponseBuilder responseBuilder = new CobSpecResponseBuilder();
     HeadHandler handler = new HeadHandler(responseBuilder);
 
-    HttpRequest request = new HttpRequest("HEAD", "/", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    HttpRequest request = new HttpRequest("HEAD", "/", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     response = handler.handleRoute(request);
   }
 

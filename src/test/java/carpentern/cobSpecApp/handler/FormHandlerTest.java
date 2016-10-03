@@ -1,16 +1,15 @@
 import carpentern.cobSpecApp.handler.FormHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
-import java.io.File;
 
 public class FormHandlerTest extends junit.framework.TestCase {
   private HttpResponse response;
   private String responseBody;
   private MockHttpFileIO fileIO;
   private MockHttpFileSystem fileSystem;
-  private HttpResponseBuilder responseBuilder;
+  private CobSpecResponseBuilder responseBuilder;
   private Formatter formatter;
   private String method;
   private Boolean exists;
@@ -20,7 +19,7 @@ public class FormHandlerTest extends junit.framework.TestCase {
     formatter = new Formatter();
     fileIO = new MockHttpFileIO();
     fileSystem = new MockHttpFileSystem();
-    responseBuilder = new HttpResponseBuilder();
+    responseBuilder = new CobSpecResponseBuilder();
     testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
   }
@@ -36,7 +35,7 @@ public class FormHandlerTest extends junit.framework.TestCase {
     fileSystem.stubExists(exists);
 
     FormHandler handler = new FormHandler(responseBuilder, fileSystem, fileIO);
-    HttpRequest request = new HttpRequest(method, "/form", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    HttpRequest request = new HttpRequest(method, "/form", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     
     return handler.handleRoute(request);
   }

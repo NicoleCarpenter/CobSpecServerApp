@@ -1,23 +1,17 @@
 import carpentern.cobSpecApp.handler.BasicAuthHandler;
 import carpentern.cobSpecApp.util.RequestLogger;
-
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
 import java.util.HashMap;
 import java.util.Arrays;
 
 public class BasicAuthHandlerTest extends junit.framework.TestCase {
-  private MockHttpResponseBuilder responseBuilder;
+  private MockCobSpecResponseBuilder responseBuilder;
   private BasicAuthHandler handler;
   private HashMap<String, String> requestHeaders;
-  private static String incorrectUsername = "basic dXNlcjpodW50ZXIy";
-  private static String incorrectPassphrase = "basic YWRtaW46aHVudGVyMQ==";
-  private static String incorrectFormat = "basic YWRtaW58aHVudGVyMg==";
-  private static String incorrectFormat2 = "YWRtaW46aHVudGVyMg==";
-  private static String correctCredentials = "basic YWRtaW46aHVudGVyMg==";
 
   protected void setUp() {
-    responseBuilder = new MockHttpResponseBuilder();
+    responseBuilder = new MockCobSpecResponseBuilder();
     handler = new BasicAuthHandler(responseBuilder);
     requestHeaders = new HashMap<String, String>();
   }
@@ -30,7 +24,7 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   public void testHandleRouteNoAuthHeader() {
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNull(authHeader);
     assertTrue(responseBuilder.buildUnauthorizedResponseCalled);
@@ -39,11 +33,12 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteNotAuthorizedIncorrectUsername() {
+    String incorrectUsername = "basic dXNlcjpodW50ZXIy";
     requestHeaders.put("Authorization", incorrectUsername);
     
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNotNull(authHeader);
     assertTrue(responseBuilder.buildUnauthorizedResponseCalled);
@@ -52,11 +47,12 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteNotAuthorizedIncorrectPassphrase() {
+    String incorrectPassphrase = "basic YWRtaW46aHVudGVyMQ==";
     requestHeaders.put("Authorization", incorrectPassphrase);
     
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNotNull(authHeader);
     assertTrue(responseBuilder.buildUnauthorizedResponseCalled);
@@ -65,11 +61,12 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteNotAuthorizedIncorrectFormatColon() {
+    String incorrectFormat = "basic YWRtaW58aHVudGVyMg==";
     requestHeaders.put("Authorization", incorrectFormat);
     
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNotNull(authHeader);
     assertTrue(responseBuilder.buildUnauthorizedResponseCalled);
@@ -78,11 +75,12 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteNotAuthorizedIncorrectFormatSpace() {
+    String incorrectFormat2 = "YWRtaW46aHVudGVyMg==";
     requestHeaders.put("Authorization", incorrectFormat2);
     
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNotNull(authHeader);
     assertTrue(responseBuilder.buildUnauthorizedResponseCalled);
@@ -91,15 +89,16 @@ public class BasicAuthHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteAuthorized() {
+    String correctCredentials = "basic YWRtaW46aHVudGVyMg==";
     RequestLogger.clear();
-    RequestLogger.log(new HttpRequest("GET", "/index", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), ""));
-    RequestLogger.log(new HttpRequest("OPTIONS", "/method_options", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), ""));
+    RequestLogger.log(new HttpRequest("GET", "/index", new HashMap<>(), "HTTP/1.1", new HashMap<>(), ""));
+    RequestLogger.log(new HttpRequest("OPTIONS", "/method_options", new HashMap<>(), "HTTP/1.1", new HashMap<>(), ""));
     
     requestHeaders.put("Authorization", correctCredentials);
     
     HttpRequest request = new HttpRequest("GET", "/logs", new HashMap<>(), "HTTP/1.1", requestHeaders, "");
     String authHeader = request.getHeaderLines().get("Authorization");
-    HttpResponse response = handler.handleRoute(request);
+    handler.handleRoute(request);
 
     assertNotNull(authHeader);
     assertTrue(responseBuilder.buildOkResponseCalled);

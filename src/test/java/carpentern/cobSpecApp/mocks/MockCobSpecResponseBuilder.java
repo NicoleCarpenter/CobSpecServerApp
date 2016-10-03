@@ -1,7 +1,7 @@
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
+import carpentern.cobSpecApp.response.ResponseBuilder;
 
-public class MockHttpResponseBuilder implements ResponseBuilder {
+public class MockCobSpecResponseBuilder implements ResponseBuilder {
   boolean setStatusCodeCalled;
   boolean setStatusMessageCalled;
   boolean setDefaultHeadersCalled;
@@ -19,7 +19,7 @@ public class MockHttpResponseBuilder implements ResponseBuilder {
   boolean buildRedirectResponseCalled;
   boolean buildCoffeeResponseCalled;
   
-  public MockHttpResponseBuilder() {
+  public MockCobSpecResponseBuilder() {
     setStatusCodeCalled = false;
     setStatusMessageCalled = false;
     setDefaultHeadersCalled = false;

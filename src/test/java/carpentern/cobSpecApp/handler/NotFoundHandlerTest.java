@@ -1,19 +1,18 @@
 import carpentern.cobSpecApp.handler.NotFoundHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
 
 public class NotFoundHandlerTest extends junit.framework.TestCase {
-  private NotFoundHandler handler;
   private HttpResponse response;
   private Formatter formatter;
 
   protected void setUp() {
     formatter = new Formatter();
-    HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
-    handler = new NotFoundHandler(responseBuilder);
-    HttpRequest request = new HttpRequest("GET", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "");
+    CobSpecResponseBuilder responseBuilder = new CobSpecResponseBuilder();
+    NotFoundHandler handler = new NotFoundHandler(responseBuilder);
+    HttpRequest request = new HttpRequest("GET", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "");
     response = handler.handleRoute(request);
   }
 

@@ -1,7 +1,7 @@
 import carpentern.cobSpecApp.handler.MethodNotAllowedHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
 
 public class MethodNotAllowedHandlerTest extends junit.framework.TestCase {
@@ -11,9 +11,9 @@ public class MethodNotAllowedHandlerTest extends junit.framework.TestCase {
 
   protected void setUp() {
     formatter = new Formatter();
-    HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
+    CobSpecResponseBuilder responseBuilder = new CobSpecResponseBuilder();
     handler = new MethodNotAllowedHandler(responseBuilder);
-    HttpRequest request = new HttpRequest("mockMethod", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "mockUri", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
   }
 

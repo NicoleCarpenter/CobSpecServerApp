@@ -2,15 +2,11 @@ package carpentern.cobSpecApp.handler;
 
 import carpentern.cobSpecApp.file.FileIO;
 import carpentern.cobSpecApp.file.FileSystem;
+import carpentern.cobSpecApp.response.ResponseBuilder;
 import carpentern.cobSpecApp.util.HtmlFormatter;
-
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
-import java.util.HashMap;
-import java.util.Arrays;
 import java.io.File;
 
 public class FormHandler implements Handler {
@@ -32,43 +28,41 @@ public class FormHandler implements Handler {
     setPath(findPath(request));
 
     if (method.equals("GET")) {
-      getForm(request);
+      getForm();
     } else if (method.equals("POST")) {
       postForm(request);
     } else if (method.equals("PUT")) {
       putForm(request);
     } else {
-      deleteForm(request);
+      deleteForm();
     }
     return responseBuilder.getResponse();
   }
 
-  public void getForm(HttpRequest request) {
+  private void getForm() {
     String form = generateForm();
-    File file = new File(path);
     responseBuilder.buildOkResponse();
 
     if (fileSystem.exists(path)) {
       byte[] fileContent = fileIO.getFileContents(path);
       responseBuilder.setBody(fileContent);
     } else {
-      byte[] formContent = new String(form).getBytes();
+      byte[] formContent = form.getBytes();
       responseBuilder.setBody(formContent);
     }
-    HttpResponse response = responseBuilder.getResponse();
   }
 
-  public void postForm(HttpRequest request) {
+  private void postForm(HttpRequest request) {
     fileIO.writeToFile(path, request.getBody());
     responseBuilder.buildOkResponse();
   }
 
-  public void putForm(HttpRequest request) {
+  private void putForm(HttpRequest request) {
     fileIO.updateFile(path, request.getBody());
     responseBuilder.buildOkResponse();
   }
 
-  public void deleteForm(HttpRequest request) {
+  private void deleteForm() {
     fileIO.deleteFileContent(path);
     responseBuilder.buildOkResponse();
   }

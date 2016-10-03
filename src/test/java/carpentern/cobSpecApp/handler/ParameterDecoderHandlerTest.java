@@ -1,7 +1,7 @@
 import carpentern.cobSpecApp.handler.ParameterDecoderHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
 
 public class ParameterDecoderHandlerTest extends junit.framework.TestCase {
@@ -13,9 +13,9 @@ public class ParameterDecoderHandlerTest extends junit.framework.TestCase {
     formatter = new Formatter();
     HashMap<String, String> params = new HashMap<>();
     params.put("variable_2", "stuff");
-    HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
+    CobSpecResponseBuilder responseBuilder = new CobSpecResponseBuilder();
     handler = new ParameterDecoderHandler(responseBuilder);
-    HttpRequest request = new HttpRequest("mockMethod", "mockUri", params, "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "mockUri", params, "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
   }
 

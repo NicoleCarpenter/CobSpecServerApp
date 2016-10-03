@@ -13,8 +13,7 @@ public class HttpFileIOTest extends junit.framework.TestCase {
   protected void setUp() {
     testRoot = "/Users/foo/Desktop/coding/java/applications/CobSpecServerApp/src/test/java/carpentern/cobSpecApp/testFiles";
     applicationRoot = "/Users/foo/Desktop/coding/java/applications/CobSpecServerApp/public";
-    MockHttpFileSystem fileSystem = new MockHttpFileSystem();
-    fileIO = new HttpFileIO(new File(testRoot), fileSystem);
+    fileIO = new HttpFileIO(new File(testRoot));
   }
 
   protected void tearDown() {

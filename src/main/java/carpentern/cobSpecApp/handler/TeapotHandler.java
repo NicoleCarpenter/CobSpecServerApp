@@ -1,9 +1,9 @@
 package carpentern.cobSpecApp.handler;
 
+import carpentern.cobSpecApp.response.ResponseBuilder;
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
 
 public class TeapotHandler implements Handler {
   private ResponseBuilder responseBuilder;
@@ -24,7 +24,7 @@ public class TeapotHandler implements Handler {
   }
 
   private void buildCoffeeResponse() {
-    byte[] teapotMessage = new String("I'm a teapot").getBytes();
+    byte[] teapotMessage = "I'm a teapot".getBytes();
     responseBuilder.buildCoffeeResponse();
     responseBuilder.setBody(teapotMessage);
   }

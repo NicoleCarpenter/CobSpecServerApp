@@ -1,22 +1,21 @@
 import carpentern.cobSpecApp.file.FileIO;
 import carpentern.cobSpecApp.file.FileSystem;
 import carpentern.cobSpecApp.file.FileTypeMatcher;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import carpentern.cobSpecApp.util.SetUp;
 
 import carpentern.coreServer.router.Router;
-import carpentern.coreServer.response.HttpResponseBuilder;
 
 public class SetUpTest extends junit.framework.TestCase {
-  private MockHttpRouter router;
-  private HttpResponseBuilder responseBuilder;
+  private CobSpecResponseBuilder responseBuilder;
   private MockHttpFileSystem fileSystem;
   private MockHttpFileIO fileIO;
   private FileTypeMatcher typeMatcher;
   private SetUp setUp;
 
   protected void setUp() {
-    router = new MockHttpRouter();
-    responseBuilder = new HttpResponseBuilder();
+    MockHttpRouter router = new MockHttpRouter();
+    responseBuilder = new CobSpecResponseBuilder();
     fileSystem = new MockHttpFileSystem();
     fileIO = new MockHttpFileIO();
     typeMatcher = new FileTypeMatcher();

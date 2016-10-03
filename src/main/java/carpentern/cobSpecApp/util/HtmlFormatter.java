@@ -1,11 +1,11 @@
 package carpentern.cobSpecApp.util;
 
 public class HtmlFormatter {
-  private final String htmlHead = "<!DOCTYPE html><html><body>";
-  private final String htmlFoot = "</body></html>";
 
   public byte[] getFormattedDirectoryFiles(String[] files, String uri) {
-    return new String(htmlHead + buildFileLinks(files, uri) + htmlFoot).getBytes();
+    String htmlHead = "<!DOCTYPE html><html><body>";
+    String htmlFoot = "</body></html>";
+    return (htmlHead + buildFileLinks(files, uri) + htmlFoot).getBytes();
   }
 
   public String createForm() {

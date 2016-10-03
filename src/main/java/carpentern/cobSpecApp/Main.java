@@ -4,13 +4,13 @@ import carpentern.cobSpecApp.file.FileTypeMatcher;
 import carpentern.cobSpecApp.file.HttpFileIO;
 import carpentern.cobSpecApp.file.HttpFileSystem;
 import carpentern.cobSpecApp.parser.ArgumentParser;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import carpentern.cobSpecApp.router.HttpRouter;
 import carpentern.cobSpecApp.util.SetUp;
 
 import carpentern.coreServer.io.HttpServerOutput;
 import carpentern.coreServer.parser.HttpParamParser;
 import carpentern.coreServer.request.HttpRequestParser;
-import carpentern.coreServer.response.HttpResponseBuilder;
 import carpentern.coreServer.server.HttpServer;
 import carpentern.coreServer.socket.HttpServerSocket;
 
@@ -35,16 +35,16 @@ public class Main {
     HttpServerSocket httpServerSocket = new HttpServerSocket(serverSocket);
     HttpServerOutput httpServerOutput = new HttpServerOutput();
     HttpParamParser httpParamParser = new HttpParamParser();
-    HttpRequestParser httpRequestParser = new HttpRequestParser(httpServerOutput, httpParamParser);
+    HttpRequestParser httpRequestParser = new HttpRequestParser(httpParamParser);
     File rootDirectory = new File(argsParser.getRootDirectory());
     HttpFileSystem fileSystem = new HttpFileSystem();
-    HttpFileIO fileIO = new HttpFileIO(rootDirectory, fileSystem);
-    HttpResponseBuilder httpResponseBuilder = new HttpResponseBuilder();
+    HttpFileIO fileIO = new HttpFileIO(rootDirectory);
+    CobSpecResponseBuilder cobSpecResponseBuilder = new CobSpecResponseBuilder();
     FileTypeMatcher typeMatcher = new FileTypeMatcher();
 
     SetUp setUp = new SetUp();
-    setUp.registerRoutes(httpResponseBuilder, fileSystem, fileIO, typeMatcher);
-    HttpRouter httpRouter = new HttpRouter(rootDirectory, fileSystem, fileIO, httpResponseBuilder, typeMatcher);
+    setUp.registerRoutes(cobSpecResponseBuilder, fileSystem, fileIO, typeMatcher);
+    HttpRouter httpRouter = new HttpRouter(cobSpecResponseBuilder);
 
     HttpServer server = new HttpServer(httpServerSocket, httpRequestParser, httpRouter, httpServerOutput);
 

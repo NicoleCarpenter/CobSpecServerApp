@@ -25,18 +25,6 @@ public class HttpFileSystem implements FileSystem {
   }
 
   @Override
-  public String getName(String file) {
-    f = new File(file);
-    return getFileName(f);
-  }
-
-  @Override
-  public String getAbsolutePath(String file) {
-    f = new File(file);
-    return getFileAbsolutePath(f);
-  }
-
-  @Override
   public String getFileAbsolutePath(File file) {
     return file.getAbsolutePath();
   }
