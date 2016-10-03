@@ -1,5 +1,4 @@
 import carpentern.cobSpecApp.file.FileIO;
-import carpentern.coreServer.request.HttpRequest;
 import java.io.File;
 
 public class MockHttpFileIO implements FileIO {

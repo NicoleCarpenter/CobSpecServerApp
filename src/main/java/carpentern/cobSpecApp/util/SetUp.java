@@ -4,14 +4,11 @@ import carpentern.cobSpecApp.handler.*;
 import carpentern.cobSpecApp.file.FileIO;
 import carpentern.cobSpecApp.file.FileSystem;
 import carpentern.cobSpecApp.file.FileTypeMatcher;
-import carpentern.cobSpecApp.router.Routes;
-
-import carpentern.coreServer.response.HttpResponseBuilder;
-import carpentern.coreServer.router.Router;
+import carpentern.cobSpecApp.response.ResponseBuilder;
 
 public class SetUp {
 
-  public void registerRoutes(HttpResponseBuilder responseBuilder, FileSystem fileSystem, FileIO fileIO, FileTypeMatcher typeMatcher) {
+  public void registerRoutes(ResponseBuilder responseBuilder, FileSystem fileSystem, FileIO fileIO, FileTypeMatcher typeMatcher) {
     Config.routes.addRoute("/", "GET", new FileHandler(responseBuilder, fileSystem, fileIO, typeMatcher));
     Config.routes.addRoute("/image.jpeg", "GET", new FileHandler(responseBuilder, fileSystem, fileIO, typeMatcher));
     Config.routes.addRoute("/image.png", "GET", new FileHandler(responseBuilder, fileSystem, fileIO, typeMatcher));

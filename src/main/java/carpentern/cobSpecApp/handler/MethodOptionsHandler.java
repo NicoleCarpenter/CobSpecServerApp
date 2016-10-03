@@ -1,16 +1,17 @@
 package carpentern.cobSpecApp.handler;
 
+import carpentern.cobSpecApp.response.ResponseBuilder;
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
 import java.util.ArrayList;
 
-public class MethodOptionsHandler extends DefaultHandler implements Handler {
+public class MethodOptionsHandler implements Handler {
+  private ResponseBuilder responseBuilder;
   private ArrayList<String> methodOptions;
 
   public MethodOptionsHandler(ResponseBuilder responseBuilder, ArrayList<String> methodOptions) {
-    super(responseBuilder);
+    this.responseBuilder = responseBuilder;
     this.methodOptions = methodOptions;
   }
 

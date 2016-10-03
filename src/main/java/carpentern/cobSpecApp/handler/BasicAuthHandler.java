@@ -1,11 +1,10 @@
 package carpentern.cobSpecApp.handler;
 
 import carpentern.cobSpecApp.util.RequestLogger;
-
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
+import carpentern.cobSpecApp.response.ResponseBuilder;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
 
@@ -78,7 +77,7 @@ public class BasicAuthHandler implements Handler {
   }
 
   private void handleAuthorizedRequest() {
-    byte[] logData = new String(getLogData()).getBytes();
+    byte[] logData = getLogData().getBytes();
     responseBuilder.buildOkResponse();
     responseBuilder.setBody(logData);
   }

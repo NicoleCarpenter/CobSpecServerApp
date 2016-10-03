@@ -1,19 +1,16 @@
 package carpentern.cobSpecApp.handler;
 
 import carpentern.cobSpecApp.file.FileIO;
-import carpentern.cobSpecApp.file.FileSystem;
-
+import carpentern.cobSpecApp.response.ResponseBuilder;
 import carpentern.coreServer.handler.Handler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.ResponseBuilder;
 import java.io.File;
 
 public class PatchHandler implements Handler {
   private ResponseBuilder responseBuilder;
   private FileIO fileIO;
   private String etag;
-  private String defaultEtag;
 
   public PatchHandler(ResponseBuilder responseBuilder, FileIO fileIO) {
     this.responseBuilder = responseBuilder;

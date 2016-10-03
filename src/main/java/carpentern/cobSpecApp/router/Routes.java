@@ -1,7 +1,6 @@
 package carpentern.cobSpecApp.router;
 
 import carpentern.cobSpecApp.util.HttpMethods;
-
 import carpentern.coreServer.handler.Handler;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +10,7 @@ public class Routes {
   private HashMap<String, HashMap<String, Handler>> routes;
 
   public Routes() {
-    HashMap<String, Handler> route = new HashMap<String, Handler>();
-    routes = new HashMap<String, HashMap<String, Handler>>();
+    routes = new HashMap<>();
   }
 
   public HashMap<String, Handler> getRouteForUri(String uri) {
@@ -20,7 +18,7 @@ public class Routes {
   }
 
   public void addRoute(String uri, String method, Handler handler) {
-    HashMap<String, Handler> newRoute = new HashMap<String, Handler>();
+    HashMap<String, Handler> newRoute = new HashMap<>();
     HashMap<String, Handler> routesForUri = getRouteForUri(uri);
     if (!uriLogged(routesForUri)) {
       newRoute.put(method, handler);
@@ -34,9 +32,9 @@ public class Routes {
     return routes;
   }
 
-  public ArrayList<String> getMethodOptions(String uri) {
+  ArrayList<String> getMethodOptions(String uri) {
     Set<String> methodSet = getRouteForUri(uri).keySet();
-    ArrayList<String> methodList = new ArrayList<String>(methodSet);
+    ArrayList<String> methodList = new ArrayList<>(methodSet);
     if (methodList.size() != 0) {
       return methodList;
     } else {

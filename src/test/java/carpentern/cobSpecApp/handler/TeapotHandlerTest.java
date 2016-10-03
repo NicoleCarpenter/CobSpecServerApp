@@ -1,7 +1,7 @@
 import carpentern.cobSpecApp.handler.TeapotHandler;
 import carpentern.coreServer.request.HttpRequest;
 import carpentern.coreServer.response.HttpResponse;
-import carpentern.coreServer.response.HttpResponseBuilder;
+import carpentern.cobSpecApp.response.CobSpecResponseBuilder;
 import java.util.HashMap;
 
 public class TeapotHandlerTest extends junit.framework.TestCase {
@@ -11,12 +11,12 @@ public class TeapotHandlerTest extends junit.framework.TestCase {
 
   protected void setUp() {
     formatter = new Formatter();
-    HttpResponseBuilder responseBuilder = new HttpResponseBuilder();
+    CobSpecResponseBuilder responseBuilder = new CobSpecResponseBuilder();
     handler = new TeapotHandler(responseBuilder);
   }
 
   public void testHandleRouteCoffee() {
-    HttpRequest request = new HttpRequest("mockMethod", "/coffee", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "/coffee", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
     HashMap<String, String> testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
@@ -29,7 +29,7 @@ public class TeapotHandlerTest extends junit.framework.TestCase {
   }
 
   public void testHandleRouteTea() {
-    HttpRequest request = new HttpRequest("mockMethod", "/tea", new HashMap<>(), "HTTP/1.1", new HashMap<String, String>(), "mockBody");    
+    HttpRequest request = new HttpRequest("mockMethod", "/tea", new HashMap<>(), "HTTP/1.1", new HashMap<>(), "mockBody");
     response = handler.handleRoute(request);
     HashMap<String, String> testHeaders = new HashMap<>();
     testHeaders.put("Server", "Nicole's HTTP server");
